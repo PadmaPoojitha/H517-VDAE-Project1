@@ -17,5 +17,12 @@ Deliverables
 6. data/deathdays.csv
 7. data/deaths_age_sex.csv
 
+Basic git commands - Run this in terminal for version control 
+1. git clone https://github.com/PadmaPoojitha/H517-VDAE-Project1.git
+2. git status
+3. git add .
+4. git commit -m "<Comments>"
+5. git push origin <branch>
+
 # The video and documentation links are attached in index.html and additional comments are added in index.html to explain each functions, Part by part
 
