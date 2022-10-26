@@ -61,8 +61,8 @@
 
           
             <div class= "present">
-                <li><a href=""><b>Documentation</b></a></li>
-                <li><a href=""><b>Video Presentation</b></a></li>
+                <li><a href="https://docs.google.com/document/d/1Qv_1yXqlkbVP3MYvSX95bRjt-CjijU6nS_-Na3rN39M/edit?usp=sharing"><b>Documentation</b></a></li>
+                <li><a href="https://youtu.be/S3I1t_8gLng"><b>Video Presentation</b></a></li>
             </div>
             
          
@@ -75,7 +75,7 @@
 
                 var path = d3.svg.line().x(function (d) { return 750- d.x * 35; }).y(function (d) { return 700 - d.y * 35; }); 
 
-                var gorge = d3.select('#area').append('g')
+                var gorge = d3.select('#area').append('g');
 
                 for (var i = 0; i < data.length; i++){
                    var line = data[i];
