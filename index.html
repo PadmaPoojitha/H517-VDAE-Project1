@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html>
 
 <html>
@@ -25,7 +27,7 @@
           <div class="center">
             <div id="map">
                     <h2 style="text-align: center;" > London Map 1854 </h2>
-             <button type="button" class="button" onclick="draw_dots()" id="fromage" style="margin-left: 2cm;">Age</button>
+             <button type="button" class="button" onclick="draw_dots()" id="fromage" style="margin-center: 2cm;">Age</button>
              <button type="button" class="button" onclick="draw_dots()" id="fromgender" >Gender</button>
              <button type="button" class="button" onclick="draw_dots()" id="total" >Total Deaths</button>     
 
@@ -102,11 +104,11 @@
                  var j=0;
                  for(i = 0; i < days.length; i++){
 
-                 var theDay = days[i].date;
-                 var howManyDied = days[i].deaths;
+                 var day&date = days[i].date;
+                 var numdeaths = days[i].deaths;
 
-                 for(k = 0; k < howManyDied; k++){
-                   deaths[j].date = theDay;
+                 for(k = 0; k < numdeaths; k++){
+                   deaths[j].date = day&date;
                     j++;
                    }
 
