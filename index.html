@@ -29,7 +29,7 @@
             <div id="strtmap">
              <h2 style="text-align: center; font-size:200%" > London Map 1854 </h2>
              <div class="maingraph" style="text-align: center; margin-left:100px;">
-             <svg id="area" width="900" height="700"></svg>
+             <svg id="location" width="900" height="700"></svg>
 		     
              <div class = "buttonclicks" style=" margin-top:250px; display: flex; flex-direction: column; align-items: center;">       
               <button type="button" class="button" onclick="draw_dots()" id="fromage">Age</button>
@@ -75,14 +75,15 @@
                 console.log(data);
 
                 var place = d3.svg.line().x(function (d) { 
-			return 750- d.x * 35; }).y(function (d) 
-				{ return 700 - d.y * 35; }); 
+                    return 750- d.x * 35; }).y(function (d) { 
+                        return 700 - d.y * 35; 
+                    });
 
                 var gorge = d3.select('#location').append('g');
 
                 for (var i = 0; i < data.length; i++){
                    var lines = data[i];
-                   gorge.append('place').style('fill', 'none').style('stroke', '#414141').style('stroke-width', '4px').attr('d', place(lines))
+                   gorge.append('path').style('fill', 'none').style('stroke', '#414141').style('stroke-width', '4px').attr('d', place(lines))
                  }
             });
 
