@@ -13,6 +13,7 @@
 	 <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
     	 <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script> 
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    
          <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
          <script src="https://d3js.org/d3.v6.js"></script>
 	 <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
@@ -22,13 +23,13 @@
     </head>
 
     <body>
-        <h1 style= "text-align: center; font-size:200%; margin-top:40px;"> Dr. John Snow's Map: London's 1854 Cholera Epidemic </h1>
+        <h1 style= "text-align: center; font-size:300%; margin-top:40px;"> Dr. John Snow's Map: London's 1854 Cholera Epidemic </h1>
 	    
           <div class="center">
             <div id="strtmap">
                     <h2 style="text-align: center;" > London Map 1854 </h2>
                     <div class="maingraph" style="text-align: center; margin-left:100px;">
-                        <svg id="area" width="800" height="650"></svg>
+                        <svg id="area" width="900" height="700"></svg>
                         <div class = "buttonclicks" style=" margin-top:250px; display: flex; flex-direction: column; align-items: center;">       
                             <button type="button" class="button" onclick="draw_dots()" id="fromage">Age</button>
                             <button type="button" class="button" onclick="draw_dots()" id="fromgender" style= "margin-top:10px;">Gender</button>
@@ -38,13 +39,13 @@
                    
             <div class="genderclass" id="gen_id" style="display:none; text-align: center;" >
                 <a>Gender</a>
-                <div class="main" style="background-color: #00bfff; margin-left: 65px;">Male</div>
+                <div class="main" style="background-color: #00bfff; margin-left: 70px;">Male</div>
                 <div class="main" style="background-color: #ff00ff;">Female</div><br><br>
                 </div>
 		    
                 <div class="ageclass" id="age_id" style="display:none; text-align: center;">
 		<a> Age </a>
-                <div class="main" style="background-color: #ff0000; margin-left: 65px;">0-10</div>
+                <div class="main" style="background-color: #ff0000; margin-left: 70px;">0-10</div>
                 <div class="main" style="background-color: #ff8000;">10-20</div>
                 <div class="main" style="background-color: #ffff00;">20-40</div>
                 <div class="main" style="background-color: #40ff00;">40-60</div>
@@ -79,23 +80,23 @@
                 var gorge = d3.select('#location').append('g');
 
                 for (var i = 0; i < data.length; i++){
-                   var line = data[i];
-                   gorge.append('place').style('fill', 'none').style('stroke', '#101010').style('stroke-width', '3px').attr('d', place(line))
+                   var lines = data[i];
+                   gorge.append('place').style('fill', 'none').style('stroke', '#414141').style('stroke-width', '4px').attr('d', place(lines))
                  }
             });
 
             //importing pumps.csv and adding the dots in the already created map
             d3.csv("data/pumps.csv", function (data) {
                console.log(data);
-               var dots = d3.select('#location').append('g');
-               dots.selectAll('circle')
+               var spots = d3.select('#location').append('g');
+               spots.selectAll('circle')
                .data(data)
                .enter().append('circle')
-               .style('fill', 'black')
+               .style('fill', '#000000')
 	           .attr('r', '4px')
                .attr('cx', function(d) { return 750 - d.x * 35; })
                .attr('cy', function(d) { return 700 - d.y * 35; })
-	           .attr('id', function(d) { return 'dots' + 2*d.id; } );
+	           .attr('id', function(d) { return 'spots' + 2*d.id; } );
              });
 
              //importing deathdays.csv
@@ -208,23 +209,23 @@
 		        .data(deaths)
                 .enter().append('circle')
                 .attr('r', '3px')
-		        .attr('id', function(d) { return 'dots' + d.id; })
+		        .attr('id', function(d) { return 'spots' + d.id; })
                 .attr('cx', function(d) {return 650 - d.x * 30;})
                 .attr('cy', function(d) { return 570 - d.y * 30; })
                 .attr('class', function (d) {return 'dot' + d.date;})
                 .style("fill", function(d) { return color(cout(d));})
 
             //creating barchart on the right div
-            var margin = {top: 55, right: 25, bottom: 15, left: 60},
-                width = 450 - margin.left - margin.right,
-                height = 600 - margin.top - margin.bottom;
+            var mar = {top: 55, right: 25, bottom: 15, left: 60},
+                width = 450 - mar.left - mar.right,
+                height = 600 - mar.top - mar.bottom;
 		
 	   
 	        var svg = d3.select("#bar").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("width", width + mar.left + mar.right)
+            .attr("height", height + mar.top + mar.bottom)
             .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform", "translate(" + mar.left + "," + mar.top + ")");
 		
 		
        	    var y = d3.scale.ordinal()
@@ -239,19 +240,19 @@
                 .domain([0,150])
 
 	
-            var yAxis = d3.svg.axis()
+            var y_axis = d3.svg.axis()
             .scale(y)
 	        .tickSize(2)
 	        .orient("left");
 	
 	
-	        var xAxis = d3.svg.axis()
+	        var x_axis = d3.svg.axis()
             .scale(x)
 	        .tickSize(2)
 	        .orient("top");
 		
 		
-            var gy = svg.append("g")
+            var ab = svg.append("g")
             .attr("class", "y axis")
             .call(yAxis)
 	        .append("text")
@@ -263,7 +264,7 @@
 	        .style("font-weight", "bold")
 	        .text("Date");
 	
-	        var gx = svg.append("g")
+	        var bc = svg.append("g")
 	         .attr("class", "x axis")
 	         .call(xAxis)
 	   
