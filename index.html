@@ -72,7 +72,7 @@
             d3.json("data/streets.json", function (data) {
                 console.log(data);
 
-                var path = d3.svg.line().x(function (d) 
+                var place = d3.svg.line().x(function (d) 
 			{ return 750- d.x * 35; }).y(function (d) 
 			{ return 700 - d.y * 35; }); 
 
@@ -110,7 +110,7 @@
                  var numdeaths = days[i].deaths;
 
                  for(l = 0; l < numdeaths; l++){
-                   deaths[j].date = dayAnddate;
+                   deaths[a].date = dayAnddate;
                     a++;
                    }
 
