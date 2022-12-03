@@ -72,15 +72,15 @@
             d3.json("data/streets.json", function (data) {
                 console.log(data);
 
-                var place = d3.svg.line().x(function (d) 
-			{ return 750- d.x * 35; }).y(function (d) 
-			{ return 700 - d.y * 35; }); 
+                var place = d3.svg.line().x(function (d) { 
+			return 750- d.x * 35; }).y(function (d) 
+				{ return 700 - d.y * 35; }); 
 
                 var gorge = d3.select('#location').append('g');
 
                 for (var i = 0; i < data.length; i++){
                    var line = data[i];
-                   gorge.append('path').style('fill', 'none').style('stroke', '#101010').style('stroke-width', '3px').attr('d', place(line))
+                   gorge.append('place').style('fill', 'none').style('stroke', '#101010').style('stroke-width', '3px').attr('d', place(line))
                  }
             });
 
