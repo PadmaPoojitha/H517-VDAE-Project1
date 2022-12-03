@@ -43,9 +43,6 @@
             <div class="main" style="background-color: #ff0080;">60-80</div>
             <div class="main" style="background-color: #ff0000;">>80</div>
             </div>
-            <button type="button" class="button" onclick="draw_dots()" id="fromage" style="margin-left: 2cm;">Age</button>
-             <button type="button" class="button" onclick="draw_dots()" id="fromgender" >Gender</button>
-             <button type="button" class="button" onclick="draw_dots()" id="total" >Total Deaths</button>     
             <svg id="area" width="800" height="650"></svg>
             </div>
         </div>
@@ -70,15 +67,15 @@
 
           //importing streets.json and basic map function
             d3.json("data/streets.json", function (data) {
-                console.log("Hello",data);
+                console.log(data);
 
-                var path = d3.svg.line().x(function (d) { return 750- d.x * 35; }).y(function (d) { return 700 - d.y * 35; }); 
+                var loc = d3.svg.line().x(function (d) { return 750- d.x * 35; }).y(function (d) { return 700 - d.y * 35; }); 
 
-                var gorge = d3.select('#area').append('g');
+                var grge = d3.select('#area').append('g');
 
                 for (var i = 0; i < data.length; i++){
                    var line = data[i];
-                   gorge.append('path').style('fill', 'none').style('stroke', '#101010').style('stroke-width', '2px').attr('d', path(line))
+                   grge.append('loc').style('fill', 'none').style('stroke', '#141414').style('stroke-width', '2px').attr('d', loc(line))
                  }
             });
 
