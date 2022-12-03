@@ -65,7 +65,7 @@
           
             <div class= "present">
                 <li><a href="https://docs.google.com/document/d/1Qv_1yXqlkbVP3MYvSX95bRjt-CjijU6nS_-Na3rN39M/edit?usp=sharing"><b>Documentation</b></a></li>
-                <li><a href="https://youtu.be/S3I1t_8gLg"><b>Video Presentation</b></a></li>
+                <li><a href="https://youtu.be/AXj8hIRVPWY"><b>Video Presentation</b></a></li>
             </div>
             
         <script>
@@ -217,7 +217,7 @@
                 .attr('class', function (d) {return 'dot' + d.date;})
                 .style("fill", function(d) { return color(cout(d));})
 
-            //creating barchart on the right div
+            //creating barchart at the bottom
             var mar = {top: 55, right: 25, bottom: 15, left: 60},
                 width = 450 - mar.left - mar.right,
                 height = 600 - mar.top - mar.bottom;
@@ -227,7 +227,7 @@
             .attr("width", width + mar.left + mar.right)
             .attr("height", height + mar.top + mar.bottom)
             .append("g")
-            .attr("transform", "translate(" + mar.left + "," + mar.top + ")");
+            .attr("transform", "translate(" + mar.left + "," + mar.bottom + ")");
 		
 		
        	    var y = d3.scale.ordinal()
