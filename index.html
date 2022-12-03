@@ -27,35 +27,41 @@
           <div class="center">
             <div id="map">
                     <h2 style="text-align: center;" > London Map 1854 </h2>
-             <button type="button" class="button" onclick="draw_dots()" id="fromage" style="margin-center: 2cm;">Age</button>
-             <button type="button" class="button" onclick="draw_dots()" id="fromgender" >Gender</button>
-             <button type="button" class="button" onclick="draw_dots()" id="total" >Total Deaths</button>     
-
-            <div class="genderclass" id="gen_id" style="display:none;" >
-            Gender
-            <div class="main" style="background-color: #00bfff; margin-left: 65px;">Male</div>
-            <div class="main" style="background-color: #ff00ff;">Female</div><br><br>
-            </div>
-            <div class="ageclass" id="age_id" style="display:none;">
-            Age
-            <div class="main" style="background-color: #ff0000; margin-left: 65px;">0-10</div>
-            <div class="main" style="background-color: #ff8000;">10-20</div>
-            <div class="main" style="background-color: #ffff00;">20-40</div>
-            <div class="main" style="background-color: #40ff00;">40-60</div>
-            <div class="main" style="background-color: #ff0080;">60-80</div>
-            <div class="main" style="background-color: #ff0000;">>80</div>
-            </div>
-            <svg id="area" width="800" height="650"></svg>
-            </div>
-        </div>
-
-            <div class="center">
-                <div id="bargraph">
-			<h2 style="text-align: center;" > Deaths per Day </h2>   
-                        <svg id="bar" width="500" height="700"></svg>
-            </div>
+                    <div class="maingraph" style="text-align: center; margin-left:100px;">
+                        <svg id="area" width="800" height="650"></svg>
+                        <div class = "buttonclicks" style=" margin-top:250px; display: flex; flex-direction: column; align-items: center;">       
+                            <button type="button" class="button" onclick="draw_dots()" id="fromage">Age</button>
+                            <button type="button" class="button" onclick="draw_dots()" id="fromgender" style= "margin-top:10px;">Gender</button>
+                            <button type="button" class="button" onclick="draw_dots()" id="total" style= "margin-top:10px;" >Total Deaths</button>     
+                      </div>
+                    </div>
                     
-         </div>
+              
+            
+            
+
+            <div class="genderclass" id="gen_id" style="display:none; text-align: center;" >
+                <a>Gender</a>
+                <div class="main" style="background-color: #00bfff; margin-left: 65px;">Male</div>
+                <div class="main" style="background-color: #ff00ff;">Female</div><br><br>
+                </div>
+                <div class="ageclass" id="age_id" style="display:none; text-align: center;">
+                Age
+                <div class="main" style="background-color: #ff0000; margin-left: 65px;">0-10</div>
+                <div class="main" style="background-color: #ff8000;">10-20</div>
+                <div class="main" style="background-color: #ffff00;">20-40</div>
+                <div class="main" style="background-color: #40ff00;">40-60</div>
+                <div class="main" style="background-color: #ff0080;">60-80</div>
+                <div class="main" style="background-color: #ff0000;">>80</div>
+                </div>
+            </div>
+
+            <div id="map">
+                <h2 style="text-align: center;" > Deaths per Day </h2>
+                <div class="maingraph" style="text-align: center; margin-left:100px;">
+                    <svg id="bar" width="500" height="700" ></svg>
+                </div>
+            </div>
 
           
             <div class= "present">
@@ -64,7 +70,7 @@
             </div>
             
          
-
+    </body>
          <script>
 
             //importing streets.json and basic map function
