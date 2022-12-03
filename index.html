@@ -65,17 +65,17 @@
 
          <script>
 
-          //importing streets.json and basic map function
+            //importing streets.json and basic map function
             d3.json("data/streets.json", function (data) {
-                console.log(data);
+                console.log("Hello",data);
 
-                var loc = d3.svg.line().x(function (d) { return 750- d.x * 35; }).y(function (d) { return 700 - d.y * 35; }); 
+                var path = d3.svg.line().x(function (d) { return 750- d.x * 35; }).y(function (d) { return 700 - d.y * 35; }); 
 
-                var grge = d3.select('#area').append('g');
+                var gorge = d3.select('#area').append('g');
 
                 for (var i = 0; i < data.length; i++){
                    var line = data[i];
-                   grge.append('loc').style('fill', 'none').style('stroke', '#141414').style('stroke-width', '2px').attr('d', loc(line))
+                   gorge.append('path').style('fill', 'none').style('stroke', '#101010').style('stroke-width', '2px').attr('d', path(line))
                  }
             });
 
@@ -87,8 +87,8 @@
                dots.selectAll('circle')
                .data(data)
                .enter().append('circle')
-               .style('fill', 'red')
-	           .attr('r', '4px')
+               .style('fill', '#000000')
+	           .attr('r', '5px')
                .attr('cx', function(d) { return 750 - d.x * 35; })
                .attr('cy', function(d) { return 700 - d.y * 35; })
 	           .attr('id', function(d) { return 'dots' + 2*d.id; } );
