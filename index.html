@@ -25,19 +25,19 @@
           <div class="center">
             <div id="map">
                     <h2 style="text-align: center;" > London Map 1854 </h2>
-            <div class="genderclass" id="gender_id" style="display:none;" >
+            <div class="genderclass" id="gen_id" style="display:none;" >
             Gender
-            <div class="main" style="background-color: #6184cb; margin-left: 65px;">Male</div>
-            <div class="main" style="background-color: #e68df8;">Female</div><br><br>
+            <div class="main" style="background-color: #00bfff; margin-left: 65px;">Male</div>
+            <div class="main" style="background-color: #ff00ff;">Female</div><br><br>
             </div>
-            <div class="age_cl" id="age_id" style="display:none;">
+            <div class="ageclass" id="age_id" style="display:none;">
             Age
-            <div class="main" style="background-color: #e6580c; margin-left: 65px;">0-10</div>
-            <div class="main" style="background-color: #08d516 ;">10-20</div>
-            <div class="main" style="background-color: #0855e4; ">20-40</div>
-            <div class="main" style="background-color: #9511ed; ">40-60</div>
-            <div class="main" style="background-color: #18d4de;">60-80</div>
-            <div class="main" style="background-color: #e60b19;">>80</div>
+            <div class="main" style="background-color: #ff0000; margin-left: 65px;">0-10</div>
+            <div class="main" style="background-color: #ff8000;">10-20</div>
+            <div class="main" style="background-color: #ffff00;">20-40</div>
+            <div class="main" style="background-color: #40ff00;">40-60</div>
+            <div class="main" style="background-color: #ff0080;">60-80</div>
+            <div class="main" style="background-color: #ff0000;">>80</div>
             </div>
             <svg id="area" width="800" height="650"></svg>
             </div>
@@ -115,7 +115,7 @@
 	             var clickgender = document.getElementById('fromgender')
 	             var clickage = document.getElementById('fromage')
 	             const age_id = document.getElementById('age_id')
-	             const gender_id = document.getElementById('gender_id')
+	             const gen_id = document.getElementById('gen_id')
 
             var dots = d3.select('#area').append('g');
 	    
@@ -149,7 +149,7 @@
             .style("fill", function(d) { return color(cout(d));});
             
            age_id.style.display = "none";
-           gender_id.style.display = "none";
+           gen_id.style.display = "none";
 
           };
 
@@ -169,7 +169,7 @@
 		        .style("fill", function(d) { return color(cout(d));})
 		  
 		     age_id.style.display = "none";
-		     gender_id.style.display = "block";
+		     gen_id.style.display = "block";
 	 
 
 	};
@@ -190,7 +190,7 @@
 		       .style("fill", function(d) { return color(cout(d));})
 		
 		    age_id.style.display = "block";
-		    gender_id.style.display = "none";
+		    gen_id.style.display = "none";
 		 
 		
 	        };
