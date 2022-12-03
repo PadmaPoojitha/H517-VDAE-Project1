@@ -25,7 +25,7 @@
         <h1 style= "text-align: center; font-size:200%; margin-top:40px;"> Dr. John Snow's Map: London's 1854 Cholera Epidemic </h1>
 	    
           <div class="center">
-            <div id="map">
+            <div id="strtmap">
                     <h2 style="text-align: center;" > London Map 1854 </h2>
                     <div class="maingraph" style="text-align: center; margin-left:100px;">
                         <svg id="area" width="800" height="650"></svg>
@@ -35,18 +35,15 @@
                             <button type="button" class="button" onclick="draw_dots()" id="total" style= "margin-top:10px;" >Total Deaths</button>     
                       </div>
                     </div>
-                    
-              
-            
-            
-
+                   
             <div class="genderclass" id="gen_id" style="display:none; text-align: center;" >
                 <a>Gender</a>
                 <div class="main" style="background-color: #00bfff; margin-left: 65px;">Male</div>
                 <div class="main" style="background-color: #ff00ff;">Female</div><br><br>
                 </div>
+		    
                 <div class="ageclass" id="age_id" style="display:none; text-align: center;">
-                Age
+		<a> Age </a>
                 <div class="main" style="background-color: #ff0000; margin-left: 65px;">0-10</div>
                 <div class="main" style="background-color: #ff8000;">10-20</div>
                 <div class="main" style="background-color: #ffff00;">20-40</div>
@@ -59,7 +56,7 @@
             <div id="map">
                 <h2 style="text-align: center;" > Deaths per Day </h2>
                 <div class="maingraph" style="text-align: center; margin-left:100px;">
-                    <svg id="bar" width="500" height="700" ></svg>
+                    <svg id="bar" width="600" height="800" ></svg>
                 </div>
             </div>
 
@@ -69,34 +66,33 @@
                 <li><a href="https://youtu.be/S3I1t_8gLng"><b>Video Presentation</b></a></li>
             </div>
             
-         
-    </body>
-         <script>
+        <script>
 
             //importing streets.json and basic map function
             d3.json("data/streets.json", function (data) {
-                console.log("Hello",data);
+                console.log(data);
 
-                var path = d3.svg.line().x(function (d) { return 750- d.x * 35; }).y(function (d) { return 700 - d.y * 35; }); 
+                var path = d3.svg.line().x(function (d) 
+			{ return 750- d.x * 35; }).y(function (d) 
+			{ return 700 - d.y * 35; }); 
 
-                var gorge = d3.select('#area').append('g');
+                var gorge = d3.select('#location').append('g');
 
                 for (var i = 0; i < data.length; i++){
                    var line = data[i];
-                   gorge.append('path').style('fill', 'none').style('stroke', '#101010').style('stroke-width', '2px').attr('d', path(line))
+                   gorge.append('path').style('fill', 'none').style('stroke', '#101010').style('stroke-width', '3px').attr('d', place(line))
                  }
             });
 
             //importing pumps.csv and adding the dots in the already created map
             d3.csv("data/pumps.csv", function (data) {
                console.log(data);
-               var dots = d3.select('#area').append('g');
-
+               var dots = d3.select('#location').append('g');
                dots.selectAll('circle')
                .data(data)
                .enter().append('circle')
-               .style('fill', '#000000')
-	           .attr('r', '5px')
+               .style('fill', 'black')
+	           .attr('r', '4px')
                .attr('cx', function(d) { return 750 - d.x * 35; })
                .attr('cy', function(d) { return 700 - d.y * 35; })
 	           .attr('id', function(d) { return 'dots' + 2*d.id; } );
@@ -107,55 +103,58 @@
 
               //importing deaths_age_sex.csv and compare both deathdays and ages and store the how many died on a specific day data in an array
              d3.csv("data/deaths_age_sex.csv", function (deaths) {
-                 var j=0;
+                 var a=0;
                  for(i = 0; i < days.length; i++){
 
                  var dayAnddate = days[i].date;
                  var numdeaths = days[i].deaths;
 
-                 for(k = 0; k < numdeaths; k++){
+                 for(l = 0; l < numdeaths; l++){
                    deaths[j].date = dayAnddate;
-                    j++;
+                    a++;
                    }
 
                  }
 
-               var total = document.getElementById('total')
+               var final = document.getElementById('final')
 	             var clickgender = document.getElementById('fromgender')
 	             var clickage = document.getElementById('fromage')
 	             const age_id = document.getElementById('age_id')
 	             const gen_id = document.getElementById('gen_id')
 
-            var dots = d3.select('#area').append('g');
+            var dots = d3.select('#location').append('g');
 	    
             // Coloring all the data on the map
             var cValue = function(d) { return d["gender"];},
                    color_over = d3.scale.linear().domain([1,length])
                    .interpolate(d3.interpolateHcl)
-                   .range([d3.rgb('#4194DA'), d3.rgb('#4194DA')]);
+                   .range([d3.rgb('#41beda'), d3.rgb('#41beda')]);
            
             var cout = function(d) { return d["gender"];},
                    color = d3.scale.linear().domain([1,length])
                    .interpolate(d3.interpolateHcl)
-                   .range([d3.rgb('#9AC7EE'), d3.rgb('#9AC7EE')]);
+                   .range([d3.rgb('#66a9e3'), d3.rgb('#66a9e3')]);
            
        
             //function to show total death on the map, Triggered only when total button is clicked
             total.onclick = function () {
             
        
-            cValue = function(d) { return d["gender"];},
+            cValue = function(d) 
+	    { return d["gender"];},
                    color_over = d3.scale.linear().domain([1,length])
                    .interpolate(d3.interpolateHcl)
-                   .range([d3.rgb("#4194DA"), d3.rgb('#4194DA')]);
+                   .range([d3.rgb("#1c6cb0"), d3.rgb('#1c6cb0')]);
             
-            cout = function(d) { return d["gender"];},
+            cout = function(d) 
+	     { return d["gender"];},
                    color = d3.scale.linear().domain([1,length])
                    .interpolate(d3.interpolateHcl)
                    .range([d3.rgb('#9AC7EE'), d3.rgb('#9AC7EE')]);
             
             d3.selectAll('circle')
-            .style("fill", function(d) { return color(cout(d));});
+            .style("fill", function(d) 
+		   { return color(cout(d));});
             
            age_id.style.display = "none";
            gen_id.style.display = "none";
