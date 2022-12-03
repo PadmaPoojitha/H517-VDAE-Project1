@@ -11,7 +11,7 @@ height: 30px;
 /* transform: skew(20deg); */
 background: #555;
      text-align: center;
-     font-size: 22px;
+     font-size: 20px;
 /* //visibility: hidden; */
 display:inline;
 margin-right:8px;
@@ -19,7 +19,7 @@ float:left;
      }
 
 .button {
-  transition-duration: 0.2s;
+  transition-duration: 0.4s;
   background-color: #a8e0d1; 
   color: black; 
   font-size: 16px;
@@ -58,7 +58,7 @@ div.right {
 
 .present{
 border-style: inset;
-font-size: 22px;
+font-size: 20px;
 }
 
     
